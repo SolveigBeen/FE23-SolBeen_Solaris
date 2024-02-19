@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solaris</title>
+  <link href="style.css" rel=" stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Secular+One&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="rocket">
+      <div class="rocket-flames">
+        <div class="rocket-flames--yellow"></div>
+        <div class="rocket-flames--orange"></div>
+        <div class="rocket-flames--yellow"></div>
+      </div>
+      <div class="rocket-body">
+        <form class="input-container">
+          <select name="languages" id="lang" class="select-field" >
+            <option value="" disabled selected hidden>Sök planeten</option>
+            <option value="Merkurius">Merkurius</option>
+            <option value="Venus">Venus</option>
+            <option value="Jorden">Jorden</option>
+            <option value="Mars">Mars</option>
+            <option value="Jupiter">Jupiter</option>
+            <option value="Saturnus">Saturnus</option>
+            <option value="Uranus">Uranus</option>
+            <option value="Neptunus">Neptunus</option>
+            <option value="Pluto">Pluto</option>
+          </select>
+          <input type="submit" value="Submit" class="search-btn" />
+        </form>
+      </div>
+        <div class="rocket-top"></div>
+    </div>
+    <div class="header__titles">
+      <h1 class ="header1">Solsystemet</h1>
+      <h2 class ="header2">Solaris</h2>
+  </div>
+</header>
+  <main class="planet-space">
+    <div class="sun"></div>
+    <div class="planet"></div>
+  </main>
+  
+  <script src="script.js"></script>
+</body>
+</html>
