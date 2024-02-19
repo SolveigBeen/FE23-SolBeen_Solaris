@@ -119,9 +119,10 @@ body {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content:space-around;
   height: 100%;
   margin-top: -150px;
+  padding-left:100px;
 }
 .sun {
   width: 1278px;
@@ -129,7 +130,7 @@ body {
   border-radius: 1278px;
   background: #ffd029;
   position: absolute;
-  left: -1228px;
+  left: -1150px;
   box-shadow: 0px 0px 250px 0px rgba(255, 208, 41, 0.2);
 }
 
@@ -140,3 +141,59 @@ body {
   flex-shrink: 0;
   background-color: var(--clr--blue);
 }
+#merkurius{
+  width: 14px;
+  height: 14px;
+  border-radius: 14px;
+  background-color: var(--clr--grey);
+}
+#venus{
+  width: 26px;
+  height: 26px;
+  border-radius: 26px;
+  background-color: var(--clr--grey-pink);
+}
+
+#tellus{
+  width: 28px;
+  height: 28px;
+  border-radius: 28px;
+  background-color: var(--clr--blue);
+}
+#mars{
+  width: 14px;
+  height: 14px;
+  border-radius: 14px;
+  background-color: var(--clr--red);
+}
+#jupiter{
+  width: 188px;
+height: 188px;
+  border-radius: 188px;
+  background-color: var(--clr--orange);
+}
+#saturnus{
+  width: 144px;
+  height: 144px;
+  border-radius: 144px;
+  background-color: var(--clr--light-brown);
+}
+#uranus{
+  width: 66px;
+height: 66px;
+  border-radius: 66px;
+  background-color: var(--clr--light-blue);
+}
+#neptunus{
+  width: 66px;
+height: 66px;
+  border-radius: 66px;
+  background-color: var(--clr--grey-blue);
+}
+#pluto{
+  width: 14px;
+  height: 14px;
+  border-radius: 14px;
+  background-color: var(--clr--red);
+}
+

@@ -19,7 +19,7 @@
       </div>
       <div class="rocket-body">
         <form class="input-container">
-          <select name="languages" id="lang" class="select-field" >
+          <select name="languages" id="planetSearchName" class="select-field" >
             <option value="" disabled selected hidden>Sök planeten</option>
             <option value="Merkurius">Merkurius</option>
             <option value="Venus">Venus</option>
@@ -31,7 +31,7 @@
             <option value="Neptunus">Neptunus</option>
             <option value="Pluto">Pluto</option>
           </select>
-          <input type="submit" value="Submit" class="search-btn" />
+          <input type="submit" value="Submit" class="search-btn" id="search-btn"/>
         </form>
       </div>
         <div class="rocket-top"></div>
@@ -43,7 +43,15 @@
 </header>
   <main class="planet-space">
     <div class="sun"></div>
-    <div class="planet"></div>
+    <div class="planet"  id="merkurius"></div>
+    <div class="planet" id="venus"></div>
+    <div class="planet" id="tellus"></div>
+    <div class="planet" id="mars"></div>
+    <div class="planet" id="jupiter"></div>
+    <div class="planet" id="saturnus"></div>
+    <div class="planet" id="uranus"></div>
+    <div class="planet" id="neptunus"></div>
+    <div class="planet" id="pluto"></div>
   </main>
   
   <script src="script.js"></script>
