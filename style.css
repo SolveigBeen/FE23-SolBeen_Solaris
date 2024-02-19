@@ -50,6 +50,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   margin: 2rem;
+  height:5rem;
 }
 
 .header__titles {
@@ -119,12 +120,13 @@ body {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content:space-around;
+  justify-content: space-around;
   height: 100%;
   margin-top: -150px;
-  padding-left:100px;
+  padding-left: 100px;
+  z-index: -1;
 }
-.sun {
+#sun {
   width: 1278px;
   height: 1278px;
   border-radius: 1278px;
@@ -134,66 +136,96 @@ body {
   box-shadow: 0px 0px 250px 0px rgba(255, 208, 41, 0.2);
 }
 
-.planet {
-  width: 26px;
-  height: 26px;
-  border-radius: 26px;
-  flex-shrink: 0;
-  background-color: var(--clr--blue);
-}
-#merkurius{
+
+
+#merkurius {
   width: 14px;
   height: 14px;
   border-radius: 14px;
   background-color: var(--clr--grey);
 }
-#venus{
+#venus {
   width: 26px;
   height: 26px;
   border-radius: 26px;
   background-color: var(--clr--grey-pink);
 }
 
-#tellus{
+#tellus {
   width: 28px;
   height: 28px;
   border-radius: 28px;
   background-color: var(--clr--blue);
 }
-#mars{
+#mars {
   width: 14px;
   height: 14px;
   border-radius: 14px;
   background-color: var(--clr--red);
 }
-#jupiter{
+#jupiter {
   width: 188px;
-height: 188px;
+  height: 188px;
   border-radius: 188px;
   background-color: var(--clr--orange);
 }
-#saturnus{
+#saturnus {
   width: 144px;
   height: 144px;
   border-radius: 144px;
   background-color: var(--clr--light-brown);
 }
-#uranus{
+#uranus {
   width: 66px;
-height: 66px;
+  height: 66px;
   border-radius: 66px;
   background-color: var(--clr--light-blue);
 }
-#neptunus{
+#neptunus {
   width: 66px;
-height: 66px;
+  height: 66px;
   border-radius: 66px;
   background-color: var(--clr--grey-blue);
 }
-#pluto{
-  width: 14px;
-  height: 14px;
-  border-radius: 14px;
-  background-color: var(--clr--red);
+
+
+
+
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding: 3rem;
+  top: 50%; /* Position from the top edge */
+  left: 50%; /* Position from the left edge */
+  transform: translate(-50%, -50%); /* Center the modal */
+  width: 70%;
+  height: 70%;
+  margin: auto;
+  z-index: 3;
+  background-color: rgba(223, 211, 211, 0.639);
 }
 
+.close {
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/*
+.modalbackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  z-index: 2;
+}

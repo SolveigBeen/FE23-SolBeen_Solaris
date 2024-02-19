@@ -10,8 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Secular+One&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="header">
-    <div class="rocket">
+  <header class="header" id="header">
+    <div class="rocket" id="rocket">
       <div class="rocket-flames">
         <div class="rocket-flames--yellow"></div>
         <div class="rocket-flames--orange"></div>
@@ -29,9 +29,8 @@
             <option value="Saturnus">Saturnus</option>
             <option value="Uranus">Uranus</option>
             <option value="Neptunus">Neptunus</option>
-            <option value="Pluto">Pluto</option>
           </select>
-          <input type="submit" value="Submit" class="search-btn" id="search-btn"/>
+          <input type="submit" value="Submit" class="search-btn" id="searchBtn"/>
         </form>
       </div>
         <div class="rocket-top"></div>
@@ -39,11 +38,11 @@
     <div class="header__titles">
       <h1 class ="header1">Solsystemet</h1>
       <h2 class ="header2">Solaris</h2>
-  </div>
-</header>
+    </div>
+  </header>
   <main class="planet-space">
-    <div class="sun"></div>
-    <div class="planet"  id="merkurius"></div>
+    <div id="sun"></div>
+    <div class="planet" id="merkurius"></div>
     <div class="planet" id="venus"></div>
     <div class="planet" id="tellus"></div>
     <div class="planet" id="mars"></div>
@@ -51,8 +50,14 @@
     <div class="planet" id="saturnus"></div>
     <div class="planet" id="uranus"></div>
     <div class="planet" id="neptunus"></div>
-    <div class="planet" id="pluto"></div>
+    
   </main>
+
+  <!-- Modalt fönster, gömt om ej klickat på bild i gallery -->
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImage">
+  </div>
   
   <script src="script.js"></script>
 </body>
