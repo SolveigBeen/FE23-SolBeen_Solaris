@@ -1,64 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Solaris</title>
-  <link href="style.css" rel=" stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Secular+One&display=swap" rel="stylesheet">
-</head>
-<body>
-  <header class="header" id="header">
-    <div class="rocket" id="rocket">
-      <div class="rocket-flames">
-        <div class="rocket-flames--yellow"></div>
-        <div class="rocket-flames--orange"></div>
-        <div class="rocket-flames--yellow"></div>
-      </div>
-      <div class="rocket-body">
-        <form class="input-container">
-          <select name="languages" id="planetSearchName" class="select-field" >
-            <option value="" disabled selected hidden>Sök planeten</option>
-            <option value="Merkurius">Merkurius</option>
-            <option value="Venus">Venus</option>
-            <option value="Jorden">Jorden</option>
-            <option value="Mars">Mars</option>
-            <option value="Jupiter">Jupiter</option>
-            <option value="Saturnus">Saturnus</option>
-            <option value="Uranus">Uranus</option>
-            <option value="Neptunus">Neptunus</option>
-          </select>
-          <input type="submit" value="Submit" class="search-btn" id="searchBtn"/>
-        </form>
-      </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solaris</title>
+    <link href="style.css" rel=" stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Secular+One&display=swap"
+      rel="stylesheet" />
+  </head>
+  <body>
+    <header class="header" id="header">
+      <div class="rocket" id="rocket">
+        <div class="rocket-flames">
+          <div class="rocket-flames--yellow"></div>
+          <div class="rocket-flames--orange"></div>
+          <div class="rocket-flames--yellow"></div>
+        </div>
+        <div class="rocket-body">
+          <form class="input-container">
+            <select name="languages" id="planetSearchName" class="select-field">
+              <option value="" disabled selected hidden>Sök planeten</option>
+              <option value="Merkurius">Merkurius</option>
+              <option value="Venus">Venus</option>
+              <option value="Jorden">Jorden</option>
+              <option value="Mars">Mars</option>
+              <option value="Jupiter">Jupiter</option>
+              <option value="Saturnus">Saturnus</option>
+              <option value="Uranus">Uranus</option>
+              <option value="Neptunus">Neptunus</option>
+            </select>
+            <input
+              type="submit"
+              value="Submit"
+              class="search-btn"
+              id="searchBtn" />
+          </form>
+        </div>
         <div class="rocket-top"></div>
-    </div>
-    <div class="header__titles">
-      <h1 class ="header1">Solsystemet</h1>
-      <h2 class ="header2">Solaris</h2>
-    </div>
-  </header>
-  <main class="planet-space">
-    <div id="sun"></div>
-    <div class="planet" id="merkurius"></div>
-    <div class="planet" id="venus"></div>
-    <div class="planet" id="tellus"></div>
-    <div class="planet" id="mars"></div>
-    <div class="planet" id="jupiter"></div>
-    <div class="planet" id="saturnus"></div>
-    <div class="planet" id="uranus"></div>
-    <div class="planet" id="neptunus"></div>
-    
-  </main>
+      </div>
+      <div class="header__titles">
+        <h1 class="header1">Solsystemet</h1>
+        <h2 class="header2">Solaris</h2>
+      </div>
+    </header>
+    <main class="planet-space">
+      <div id="sun"></div>
+      <div class="planet" id="merkurius"></div>
+      <div class="planet" id="venus"></div>
+      <div class="planet" id="tellus"></div>
+      <div class="planet" id="mars"></div>
+      <div class="planet" id="jupiter"></div>
+      <div class="planet" id="saturnus"></div>
+      <div class="planet" id="uranus"></div>
+      <div class="planet" id="neptunus"></div>
+    </main>
 
-  <!-- Modalt fönster, gömt om ej klickat på bild i gallery -->
-  <div id="myModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="modalImage">
-  </div>
-  
-  <script src="script.js"></script>
-</body>
+    <!-- Modalt fönster, gömt om ej klickat på bild i gallery -->
+    <div id="myModal" class="modal">
+      <div class="modal__info-container">
+        <h1 class="header1" id="planetName">Jorden</h1>
+        <h2 class="header2" id="planetLatinName">Tellus</h2>
+        <div class="text-container">
+          <p class="text" id="description">
+            Jorden är den största och mest kompakta av de inre planeterna.
+            Jorden är den enda av planeterna som konstaterats ha geologisk
+            aktivitet och är även den enda planeten som med säkerhet härbärgerar
+            liv. Dess flytande hydrosfär är unik bland stenplaneterna och jorden
+            är också den enda planeten hos vilken plattektonik har observerats.
+            Jordens atmosfär skiljer sig markant från de andra planeternas,
+            vilket förklaras av att närvaron av levande organismer har förändrat
+            atmosfären till att innehålla fritt syre, i dag motsvarande 21
+            procent.
+          </p>
+        </div>
+        <div class="info-container">
+          <div class="info-box">
+            <h3 class="header3">Omkrets</h3>
+            <p class="text" id="omkrets">40 075 km</p>
+          </div>
+          <div class="info-box">
+            <h3 class="header3">Km från solen</h3>
+            <p class="text" id="distSun">148 488 488 km</p>
+          </div>
+        </div>
+        <div class="info-container">
+          <div class="info-box">
+            <h3 class="header3">Max Temperatur</h3>
+            <p class="text" id="maxTemp">50C</p>
+          </div>
+          <div class="info-box">
+            <h3 class="header3">Min Temperatur</h3>
+            <p class="text" id="minTemp">-50 C</p>
+          </div>
+        </div>
+        <div class="info-container">
+          <div class="info-box">
+            <h3 class="header3">Månar</h3>
+            <p class="text" id="moons">Månen</p>
+          </div>
+        </div>
+      </div>
+      <span class="close">&times;</span>
+      <img class="modal-content" id="modalImage" />
+
+      <footer class="footer">
+       
+        <div class="footer__logo">
+          <div class="footer__logo--image"><img src="images/ZoCom.jpg" /></div>
+        </div>
+       
+        <div class="footer__rocket">
+          <div class="rocket ">
+            <div class="rocket-flames">
+              <div class="rocket-flames--yellow"></div>
+              <div class="rocket-flames--orange"></div>
+              <div class="rocket-flames--yellow"></div>
+            </div>
+            <div class="rocket-body">
+              <button class="close-btn" id="close-btn">Res vidare</button>
+            </div>
+            <div class="rocket-top"></div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script type="module" src="script.js"></script>
+  </body>
 </html>
