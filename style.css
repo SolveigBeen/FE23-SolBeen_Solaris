@@ -23,6 +23,7 @@ body {
   height: 100vh;
   overflow: hidden;
   position: relative;
+  z-index:-99;
 }
 .header1 {
   color: #fff;
@@ -68,8 +69,8 @@ body {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin: 2rem;
-  height:5rem;
+  margin: 2em 2em 0 2em;
+  height:10em;
 }
 
 .header__titles {
@@ -79,18 +80,21 @@ body {
   margin-left: 50px;
 }
 
+.header__search{
+  display: flex;
+  flex-direction: column;
+ align-items: center;
+ gap:2em;
+}
 .rocket {
   display: flex;
-  
   gap: 0rem;
   height: 4.5em;
 }
 
-
 .rocket-body {
   background: var(--clr--grey);
   display: flex;
-  
   flex-shrink: 0;
   align-items: center;
   padding: 0.5em;
@@ -145,12 +149,45 @@ body {
 .rocket-flames--yellow {
   border-top: 0.5em solid transparent; /* Half of the height */
   border-bottom: 0.5em solid transparent; /* Half of the height */
-  border-right: 6em solid #ffd029;
+  border-right: 6em solid var(--clr--yellow);
+  border-radius: 10%;
+  animation: fireFlames 0.6s ease-in-out infinite alternate;
 }
+
+
 .rocket-flames--orange {
   border-top: 1em solid transparent; /* Half of the height */
   border-bottom: 1em solid transparent; /* Half of the height */
-  border-right: 9em solid var(--clr--orange);
+  border-right: 9em solid var( --clr--orange);
+  border-radius: 10%;
+  animation: fireFlames 1s ease-in-out infinite alternate;
+}
+
+@keyframes fireFlames {
+  0% {
+    transform: scaleY(1);
+    filter: brightness(100%);
+  }
+  50% {
+    transform: scaleY(1.2) ;
+    filter: brightness(150%);
+  }
+  100% {
+    transform: scaleY(1);
+    filter: brightness(100%);
+  }
+}
+
+
+.error-message {
+  justify-self: flex-start;
+  border-style: dotted;
+  border-color:   white;
+  border-radius: 1em;
+  width: fit-content;
+  padding: 0 2em;
+  margin-bottom: 1em;
+  display: none;
 }
 
 .planet-space {
@@ -171,21 +208,28 @@ body {
   position: absolute;
   left: -1150px;
   box-shadow: 0px 0px 250px 0px rgba(255, 208, 41, 0.2);
+
 }
 
-
+.planet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 #merkurius {
   width: 14px;
   height: 14px;
   border-radius: 14px;
   background-color: var(--clr--grey);
+ 
 }
 #venus {
   width: 26px;
   height: 26px;
   border-radius: 26px;
   background-color: var(--clr--grey-pink);
+
 }
 
 #tellus {
@@ -193,6 +237,7 @@ body {
   height: 28px;
   border-radius: 28px;
   background-color: var(--clr--blue);
+ 
 }
 #mars {
   width: 14px;
@@ -205,6 +250,14 @@ body {
   height: 188px;
   border-radius: 188px;
   background-color: var(--clr--orange);
+   }
+
+#saturnus-container {
+  width: 200px;
+  height: 200px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }
 #saturnus {
   width: 144px;
@@ -212,6 +265,16 @@ body {
   border-radius: 144px;
   background-color: var(--clr--light-brown);
 }
+
+#sat-ring{
+ position:absolute;
+  width:  190px;
+  height: 15px;
+  border-radius: 20px;;
+  background-color: #ffffff98;
+  transform: rotate(-25deg);
+}
+
 #uranus {
   width: 66px;
   height: 66px;
@@ -225,7 +288,22 @@ body {
   background-color: var(--clr--grey-blue);
 }
 
-
+.tooltip {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.561);
+  color: #0c164d;
+  font-family: "Lora", serif;
+  font-size: 24px;font-weight: 600;
+  padding: 0.5em 1em;
+  border-radius: 3em;
+  width: fit-content;
+ /* top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);*/
+display:flex;
+justify-content: center;
+align-items: center;
+}
 
 
 

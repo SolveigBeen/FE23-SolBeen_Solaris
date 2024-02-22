@@ -3,71 +3,79 @@
 
 const searchBtn = document.getElementById("searchBtn");
 
-const planetSearchName = document.getElementById("planetSearchName");
-console.log(planetSearchName);
+// Get all planets  for tooltips
+const planets = document.querySelectorAll('.planet');
 
-import { planetInfoMode}  from './modules/display.js';
-import{writeInfo} from './modules/planetInfo.js';
+const planetNames = [];   /*used in getAvailablePlanetNames*/
+
+
+import {PlanetStoredData} from './modules/api.js';
+import {planetInfoMode}  from './modules/display.js';
+import {modal} from './modules/display.js';
+import {writeInfo} from './modules/planetInfo.js';
+import {displayErrorMessage} from './modules/displayErrors.js';
+import{showTooltip} from './modules/tooltip.js';
+import{hideTooltip} from './modules/tooltip.js';
+
 
 searchBtn.addEventListener('click', async function(event) {
   event.preventDefault(); // Prevent default form submission behavior
-  let searchPlanet = planetSearchName.value;
-  console.log(searchPlanet);
-  clearInput();     /* Nollställer och förbereder drop-down för ny sökning*/
-  planetInfoMode();    /* Göm header och solsystem. Gör solen blå */
-  modal();
-  getPlanetInfo();
-  try {
-    const data = await getPlanetInfo(searchPlanet);
-    writeInfo(data, searchPlanet);
-  } catch (error) {
-    console.log('Error', error);
-  }
-});
+  const planetSearchName = document.getElementById("planetSearchName").value;
+  console.log('rocket',planetSearchName);
 
+    try {
+      // Fetch planet data from the API
+      const data = await PlanetStoredData();  
+      // Get available planet names in array.
+      getAvailablePlanetNames(data);
+  
+     if( checkSearchPlanetIsAvailable(planetNames,planetSearchName.value)){
+        modal();  // Open and create modal window
+        writeInfo(data, planetSearchName);  // Write planet information to the modal window
+        planetInfoMode();  // Hide header and solar system elements
+        clearInput();  // Clear search input field
+      } else {
+       displayErrorMessage("Rymden är stor. Ingen planet hittades.");
+      }
+    } catch (error) {
+      // Handle any errors that occur during the process
+      console.log('Error', error);
+      displayErrorMessage("Rymden är så stor och nu har vi hamnat ur kurs.");
+    }
+    });
+ 
 
 /* Nollställer och förbereder drop-down för ny sökning*/
 function clearInput() {
   planetSearchName.value = '';
 }
 
-//Hämta information om planeter
-async function getPlanetInfo(){
-  try{
-  const response = await fetch ('https://n5n3eiyjb0.execute-api.eu-north-1.amazonaws.com/bodies', {
-    method: 'GET',
-    headers: {'x-zocom': 'solaris-2ngXkR6S02ijFrTP'}
-});
-if (!response.ok) {
-  throw new Error('Rymden är stor. Ingen planet hittades.');
-}
 
-const data = await response.json();
-  console.log(data);
-return(data);
-
-        
-  } catch (error) {
-      console.log('Error', error);
+function getAvailablePlanetNames(data) {
+  for (const planet of data.bodies) {
+    planetNames.push(planet.name);
   }
+  return planetNames;
+}
+
+function checkSearchPlanetIsAvailable() {
+  let status = planetNames.includes(planetSearchName.value);
+console.log('sdfsf' ,planetSearchName.value)
+console.log('gfgfg',planetNames);
+console.log(status);
+  return status;
 }
 
 
-
-/* Visa info om planeter i modalt fönster*/
-function modal(){
-  let modalContainer = document.createElement('div');
-  modalContainer.className = 'modalbackground';
-  document.body.appendChild(modalContainer);
-
-  let modal = document.getElementById('myModal');
-  modal.style.display = 'block';
- 
-  const closeBtn =document.getElementById('close-btn');
-  closeBtn.addEventListener('click', () => {
-    modal.style.display = 'none';
-    document.body.removeChild(modalContainer);
-    location.reload();
+// Attach event listeners to each planet for tooltips
+planets.forEach(planet => {
+  planet.addEventListener('mouseover', () => {
+    showTooltip(planet);
   });
-}
 
+  planet.addEventListener('mouseout', () => {
+    tooltipTimeout = setTimeout(() => {
+      hideTooltip(planet);
+    }, 1000);
+     });
+});

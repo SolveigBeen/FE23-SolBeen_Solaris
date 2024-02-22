@@ -13,4 +13,23 @@ function planetInfoMode(){
   });
 }
 
+/* Skapa modalt fönster för att visa info om planeter */
+function modal(){
+  let modalContainer = document.createElement('div');
+  modalContainer.className = 'modalbackground';
+  document.body.appendChild(modalContainer);
+
+  let modal = document.getElementById('myModal');
+  modal.style.display = 'block';
+ 
+  const closeBtn =document.getElementById('close-btn');
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+    document.body.removeChild(modalContainer);
+    location.reload();
+  });
+}
+
+
 export {planetInfoMode}
+export {modal}
