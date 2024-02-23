@@ -1,57 +1,36 @@
-"use strict";
-/*variabel deklaration */
-
-const searchBtn = document.getElementById("searchBtn");
-
-// Get all planets  for tooltips
-const planets = document.querySelectorAll('.planet');
-
-const planetNames = [];   /*used in getAvailablePlanetNames*/
-
-
-import {PlanetStoredData} from './modules/api.js';
-import {planetInfoMode}  from './modules/display.js';
-import {modal} from './modules/display.js';
-import {writeInfo} from './modules/planetInfo.js';
-import {displayErrorMessage} from './modules/displayErrors.js';
+import { getPlanetData } from "./modules/api.js";
+import { displayErrorMessage, hideErrorMessage } from "./modules/displayErrors.js";
+import {openInfoWindowForPlanet} from "./modules/planetInfoWindow.js";
 import{showTooltip} from './modules/tooltip.js';
 import{hideTooltip} from './modules/tooltip.js';
 
+const planetNames = [];
+const searchBtn = document.getElementById("searchBtn");
+// Get all planets  for tooltips
+const planets = document.querySelectorAll('.planet');
 
-searchBtn.addEventListener('click', async function(event) {
-  event.preventDefault(); // Prevent default form submission behavior
-  const planetSearchName = document.getElementById("planetSearchName").value;
-  console.log('rocket',planetSearchName);
+//Klick på sök-knapp initierar huvudfunktionen på sidan:
+searchBtn.addEventListener("click", async function (event) {
+  event.preventDefault(); 
+  hideErrorMessage();     //om tidigare felmeddelande finns så stängs det.
+  const data = await getPlanetData();   //kollar om planetdata finns i Local Storage, annars hämtas via API och sparas ner. (api.js)
+  const planetNames = getAvailablePlanetNames(data);
+  console.log(planetNames);
+  const planetSearchName = document.getElementById("planetSearchName").value;   //användarens valda planet.
+  console.log("rocket", planetSearchName);
+  if (checkSearchPlanetIsAvailable(planetNames, planetSearchName)) {
+    console.log("yes!", planetSearchName);
+   openInfoWindowForPlanet(data, planetSearchName);
 
-    try {
-      // Fetch planet data from the API
-      const data = await PlanetStoredData();  
-      // Get available planet names in array.
-      getAvailablePlanetNames(data);
-  
-     if( checkSearchPlanetIsAvailable(planetNames,planetSearchName.value)){
-        modal();  // Open and create modal window
-        writeInfo(data, planetSearchName);  // Write planet information to the modal window
-        planetInfoMode();  // Hide header and solar system elements
-        clearInput();  // Clear search input field
-      } else {
-       displayErrorMessage("Rymden är stor. Ingen planet hittades.");
-       throw new Error(data.message);
-      }
-    } catch (error) {
-      // Handle any errors that occur during the process
-      console.log('Error', error.message);
-      displayErrorMessage("Rymden är så stor och nu har vi hamnat ur kurs.");
-    }
-    });
- 
-
-/* Nollställer och förbereder drop-down för ny sökning*/
-function clearInput() {
-  planetSearchName.value = '';
-}
+  } else {
+    console.log("no planet available");
+    displayErrorMessage("Rymden är stor. Ingen planet hittades.");
+  }
+});
 
 
+
+//Hämtar lista med tillgängliga planeter från databasen.
 function getAvailablePlanetNames(data) {
   for (const planet of data.bodies) {
     planetNames.push(planet.name);
@@ -59,11 +38,13 @@ function getAvailablePlanetNames(data) {
   return planetNames;
 }
 
+
+// Kollar om användarens valda planet finns med bland tillgängliga planeter.
 function checkSearchPlanetIsAvailable() {
   let status = planetNames.includes(planetSearchName.value);
-console.log('sdfsf' ,planetSearchName.value)
-console.log('gfgfg',planetNames);
-console.log(status);
+  console.log("användarens planet", planetSearchName.value);
+  console.log("databasens planet", planetNames);
+  console.log(status);
   return status;
 }
 
