@@ -188,6 +188,7 @@ body {
   padding: 0 2em;
   margin-bottom: 1em;
   display: none;
+  z-index: 1;
 }
 
 .planet-space {
@@ -300,9 +301,6 @@ body {
  /* top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);*/
-display:flex;
-justify-content: center;
-align-items: center;
 }
 
 

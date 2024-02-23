@@ -1,5 +1,5 @@
 
-let tooltipTimeout;
+
 function showTooltip(planet) {
   if (!planet.querySelector('.tooltip')) {
   const tooltip = document.createElement('div');

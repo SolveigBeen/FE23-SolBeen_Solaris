@@ -36,10 +36,11 @@ searchBtn.addEventListener('click', async function(event) {
         clearInput();  // Clear search input field
       } else {
        displayErrorMessage("Rymden är stor. Ingen planet hittades.");
+       throw new Error(data.message);
       }
     } catch (error) {
       // Handle any errors that occur during the process
-      console.log('Error', error);
+      console.log('Error', error.message);
       displayErrorMessage("Rymden är så stor och nu har vi hamnat ur kurs.");
     }
     });
@@ -66,7 +67,7 @@ console.log(status);
   return status;
 }
 
-
+let tooltipTimeout;
 // Attach event listeners to each planet for tooltips
 planets.forEach(planet => {
   planet.addEventListener('mouseover', () => {
