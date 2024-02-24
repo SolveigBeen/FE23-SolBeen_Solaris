@@ -13,19 +13,25 @@ const planets = document.querySelectorAll('.planet');
 searchBtn.addEventListener("click", async function (event) {
   event.preventDefault(); 
   hideErrorMessage();     //om tidigare felmeddelande finns så stängs det.
+  try{
   const data = await getPlanetData();   //kollar om planetdata finns i Local Storage, annars hämtas via API och sparas ner. (api.js)
+  console.log('Ingen sparad data',data);
   const planetNames = getAvailablePlanetNames(data);
   console.log(planetNames);
   const planetSearchName = document.getElementById("planetSearchName").value;   //användarens valda planet.
   console.log("rocket", planetSearchName);
   if (checkSearchPlanetIsAvailable(planetNames, planetSearchName)) {
     console.log("yes!", planetSearchName);
+    console.log('ls', data)
    openInfoWindowForPlanet(data, planetSearchName);
 
   } else {
     console.log("no planet available");
     displayErrorMessage("Rymden är stor. Ingen planet hittades.");
   }
+}catch (error){
+  console.log('Ingen data')
+}
 });
 
 

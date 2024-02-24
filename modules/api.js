@@ -10,17 +10,16 @@ async function getPlanetData(){
     // If data exists, parse and return it
     console.log('Data found in local storage:');
     const parsedData = JSON.parse(storedData);
-    console.log(parsedData);
+    console.log('via ls',parsedData);
     return parsedData;
   } else {  
     try {
-      const apiKey = await getPlanetDataAPIKey();
-      console.log('API key:', apiKey);
-      console.log('Data retrieved from API:');
-      console.log(data);
+     const data = await getPlanetDataAPIKey();
+    
       return data;
     } catch (error) {
       console.log("Error:");
+      throw error;
     } 
   }
 }
@@ -35,15 +34,15 @@ async function getPlanetDataAPIKey() {
     );
     
     if (!response.ok) {
-      throw " Kunde inte hämta API-nyckel.";
+      throw new Error (" Kunde inte hämta API-nyckel.");
     }
     const keys = await response.json();
     console.log('API key:',keys);
     let apiKey= keys.key;
-    
-    importPlanetData(apiKey);
+    console.log(apiKey);
+    return importPlanetData(apiKey);
   } catch (error) {
-    console.log("Error:", error);
+    console.log("Error fel i anrop av API:", error);
     displayErrorMessage("Rymden är stor. Letar efter nyckeln. Fortsätt sök.");
   }
 }
