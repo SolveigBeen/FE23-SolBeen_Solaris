@@ -8,14 +8,12 @@ async function getPlanetData(){
   const storedData = localStorage.getItem('planetData');
   if (storedData) {
     // If data exists, parse and return it
-    console.log('Data found in local storage:');
     const parsedData = JSON.parse(storedData);
-    console.log('via ls',parsedData);
+    console.log('Data från Local Storage: ',parsedData);
     return parsedData;
   } else {  
     try {
-     const data = await getPlanetDataAPIKey();
-    
+      const data = await getPlanetDataAPIKey();
       return data;
     } catch (error) {
       console.log("Error:");

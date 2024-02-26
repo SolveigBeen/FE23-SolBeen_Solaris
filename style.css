@@ -25,14 +25,13 @@ body {
   position: relative;
   z-index:-99;
 }
+
 .header1 {
   color: #fff;
-  
   font-family: "Secular One";
   font-size: 60px;
   font-style: normal;
   font-weight: 400;
-  line-height: 100%; /* 60px */
   letter-spacing: 5.4px;
   text-transform: uppercase;
 }
@@ -41,7 +40,6 @@ body {
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
-  line-height: 100%; /* 24px */
   letter-spacing: 14.4px;
   text-transform: uppercase;
   color: var(--clr--yellow);
@@ -52,7 +50,6 @@ body {
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
-  line-height: 100%; /* 24px */
   letter-spacing: 9%;
   text-transform: uppercase;
   color: white;
@@ -62,7 +59,6 @@ body {
   font-size: 18px;
   line-height: 170%; 
   color: white;
-  
 }
 
 .header {
@@ -85,7 +81,9 @@ body {
   flex-direction: column;
  align-items: center;
  gap:2em;
+ 
 }
+
 .rocket {
   display: flex;
   gap: 0rem;
@@ -110,6 +108,7 @@ body {
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
+  cursor: pointer;
 }
 
 .close-btn {
@@ -131,6 +130,7 @@ body {
   width: 200px;
   border: none;
   padding: 0.5em;
+  cursor: pointer;
 }
 
 .rocket-top {
@@ -153,7 +153,6 @@ body {
   border-radius: 10%;
   animation: fireFlames 0.6s ease-in-out infinite alternate;
 }
-
 
 .rocket-flames--orange {
   border-top: 1em solid transparent; /* Half of the height */
@@ -201,6 +200,7 @@ body {
   padding-left: 100px;
   z-index: -1;
 }
+
 #sun {
   width: 1278px;
   height: 1278px;
@@ -209,11 +209,11 @@ body {
   position: absolute;
   left: -1150px;
   box-shadow: 0px 0px 250px 0px rgba(255, 208, 41, 0.2);
-
 }
 
 .planet {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -230,7 +230,6 @@ body {
   height: 26px;
   border-radius: 26px;
   background-color: var(--clr--grey-pink);
-
 }
 
 #tellus {
@@ -238,7 +237,6 @@ body {
   height: 28px;
   border-radius: 28px;
   background-color: var(--clr--blue);
- 
 }
 #mars {
   width: 14px;
@@ -266,7 +264,6 @@ body {
   border-radius: 144px;
   background-color: var(--clr--light-brown);
 }
-
 #sat-ring{
  position:absolute;
   width:  190px;
@@ -289,8 +286,9 @@ body {
   background-color: var(--clr--grey-blue);
 }
 
+/* tooltip, när muspekare dras över en planet visas dess namn */
 .tooltip {
-  position: relative;
+  position: absolute;
   background-color: rgba(255, 255, 255, 0.561);
   color: #0c164d;
   font-family: "Lora", serif;
@@ -298,13 +296,34 @@ body {
   padding: 0.5em 1em;
   border-radius: 3em;
   width: fit-content;
- /* top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);*/
+  top: 70%;
+}
+
+/*  Planet-bilder när en planet klickas*/
+.imagePlaceClass{
+  position:relative;
+  top:-0px;
+  z-index:150;
+  display: none;
+}
+
+#imagePlace{
+  position:relative;
+  /*top:-200px;*/
+  z-index:150;
+  display: none;
+}
+
+.imageTag {
+  height:300px;
+  border-radius: 50px; /* Adjust the value to change the roundness */
+  background: linear-gradient(to right, lightgrey, rgb(106, 105, 105));
+  box-shadow: 0 0 10 10px white; /* Adjust the spread value to control the border width */
+  padding:20px;
 }
 
 
-
+/* Planetfakta, visas i Modalt fönster*/
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -316,9 +335,9 @@ body {
   width: 90%;
   height: 100%;
   margin: auto;
-
   background-color: rgba(223, 211, 211, 0);
 }
+
 .modal__info-container{
   width:50vw;
   margin:auto;
@@ -329,6 +348,7 @@ body {
   max-height: 350px;
   overflow:auto;
 }
+
 .info-container{
   display: flex;
 padding: 32px  0px;
@@ -367,22 +387,10 @@ width: 50%;
     grid-column: 3;
     justify-content: end;
     width:100%;
-    }
+  }
 
 
 
 
 
 
-/*
-.modalbackground {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: black;
-  background-color: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(6px);
-  z-index: 2;
-}

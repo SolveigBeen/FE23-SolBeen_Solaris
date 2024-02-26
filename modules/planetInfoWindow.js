@@ -23,7 +23,6 @@ function openInfoWindowForPlanet(data, planetSearchName){
 }
 
 
-
 /* Skapa modalt fönster för att visa info om planeter */
 function modal(){
   let modalContainer = document.createElement('div');
@@ -42,12 +41,9 @@ function modal(){
 }
 
 
-
 /* Populera Modal-Fakta med planet-info*/
 function writeInfo(data, planetSearchName){
   let planet = data.bodies.find(planet => planet.name === planetSearchName);
- console.log(planet);
-
  planetName.innerText = planet.name;
  planetLatinName.innerText = planet.latinName;
  planetDesc.innerText = planet.desc;
@@ -59,7 +55,6 @@ function writeInfo(data, planetSearchName){
  const moonsArray = moonsString.split(',');
  const moonsWithSpaces = moonsArray.join(', ');
  planetMoons.innerText = moonsWithSpaces;
-
 }
 
 /* Göm header och solsystem. Gör solen blå */

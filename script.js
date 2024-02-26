@@ -1,13 +1,14 @@
 import { getPlanetData } from "./modules/api.js";
 import { displayErrorMessage, hideErrorMessage } from "./modules/displayErrors.js";
 import {openInfoWindowForPlanet} from "./modules/planetInfoWindow.js";
-import{showTooltip} from './modules/tooltip.js';
-import{hideTooltip} from './modules/tooltip.js';
+import{showTooltip, hideTooltip } from './modules/tooltip.js';
+import{showPlanetImage, planetImgLib} from './modules/planetImages.js';
 
 const planetNames = [];
 const searchBtn = document.getElementById("searchBtn");
 // Get all planets  for tooltips
 const planets = document.querySelectorAll('.planet');
+
 
 //Klick på sök-knapp initierar huvudfunktionen på sidan:
 searchBtn.addEventListener("click", async function (event) {
@@ -15,14 +16,11 @@ searchBtn.addEventListener("click", async function (event) {
   hideErrorMessage();     //om tidigare felmeddelande finns så stängs det.
   try{
   const data = await getPlanetData();   //kollar om planetdata finns i Local Storage, annars hämtas via API och sparas ner. (api.js)
-  console.log('Ingen sparad data',data);
-  const planetNames = getAvailablePlanetNames(data);
+  const planetNames = getAvailablePlanetNames(data);   //planeter som finns i databas
   console.log(planetNames);
   const planetSearchName = document.getElementById("planetSearchName").value;   //användarens valda planet.
-  console.log("rocket", planetSearchName);
+  console.log("Sökt planet är:", planetSearchName);
   if (checkSearchPlanetIsAvailable(planetNames, planetSearchName)) {
-    console.log("yes!", planetSearchName);
-    console.log('ls', data)
    openInfoWindowForPlanet(data, planetSearchName);
 
   } else {
@@ -33,7 +31,6 @@ searchBtn.addEventListener("click", async function (event) {
   console.log('Ingen data')
 }
 });
-
 
 
 //Hämtar lista med tillgängliga planeter från databasen.
@@ -48,22 +45,28 @@ function getAvailablePlanetNames(data) {
 // Kollar om användarens valda planet finns med bland tillgängliga planeter.
 function checkSearchPlanetIsAvailable() {
   let status = planetNames.includes(planetSearchName.value);
-  console.log("användarens planet", planetSearchName.value);
-  console.log("databasens planet", planetNames);
-  console.log(status);
+  console.log("sökt planet finns i databasen: ", status);
   return status;
 }
 
-let tooltipTimeout;
+
 // Attach event listeners to each planet for tooltips
+let tooltipTimeout;
 planets.forEach(planet => {
   planet.addEventListener('mouseover', () => {
-    showTooltip(planet);
+  showTooltip(planet);
   });
 
   planet.addEventListener('mouseout', () => {
-    tooltipTimeout = setTimeout(() => {
-      hideTooltip(planet);
+  tooltipTimeout = setTimeout(() => {
+    hideTooltip(planet);
     }, 1000);
-     });
+  });
 });
+
+
+// Event listeners för varje planet-element (div), som aktiverar funktionen som visar bild på planet.
+planetImgLib.forEach(planet => {
+  let planetElem = document.getElementById(planet.planet);
+  planetElem.addEventListener('click', () => showPlanetImage(planet.planet));
+  });
