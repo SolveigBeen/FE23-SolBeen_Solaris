@@ -36,6 +36,12 @@ function showPlanetImage(planetId) {
   let newImageTag = document.createElement('img');
   newImageTag.className='imageTag';
   newImageTag.src = imageSrc;
+
+  // Animera bilden så att den skalar upp vid visning. 
+  newImageTag.style.height = '10';    
+  void imagePlaceElem.offsetWidth;
+  newImageTag.style.animation = 'growImage 1s forwards';
+
   imagePlaceElem.appendChild(newImageTag);
   planetElem.appendChild(imagePlaceElem);
   
