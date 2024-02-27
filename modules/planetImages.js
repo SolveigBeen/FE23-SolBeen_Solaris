@@ -46,15 +46,15 @@ function showPlanetImage(planetId) {
   planetElem.appendChild(imagePlaceElem);
   
 //planetbild stängs när användaren klickar nånstans
-document.body.addEventListener('click',(event) =>{
-  let clickedElement = event.target;
-  if (!clickedElement.classList.contains('planet')) {
-    let existingImagePlaceElem = document.querySelector('.imagePlaceClass');
-    if (existingImagePlaceElem) {
-      existingImagePlaceElem.remove();
+  document.body.addEventListener('click',(event) =>{
+    let clickedElement = event.target;
+    if (!clickedElement.classList.contains('planet')) {
+      let existingImagePlaceElem = document.querySelector('.imagePlaceClass');
+      if (existingImagePlaceElem) {
+        existingImagePlaceElem.remove();
+      }
     }
-  }
-});
+  });
 }
 
 export {showPlanetImage, planetImgLib}

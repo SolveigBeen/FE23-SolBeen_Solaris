@@ -43,7 +43,7 @@ function modal(){
 
 /* Populera Modal-Fakta med planet-info*/
 function writeInfo(data, planetSearchName){
-  let planet = data.bodies.find(planet => planet.name === planetSearchName);
+ let planet = data.bodies.find(planet => planet.name === planetSearchName);
  planetName.innerText = planet.name;
  planetLatinName.innerText = planet.latinName;
  planetDesc.innerText = planet.desc;
