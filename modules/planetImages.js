@@ -3,12 +3,12 @@
 
 const planetImgLib = [
   {planet:'merkurius',  src:'./images/merkur.jpg'},
-  {planet:'venus', src:'./images/venus2.jpg'},
-  {planet:'tellus', src:'./images/tellus.jpg'},
+  {planet:'venus', src:'./images/venus.jpg'},
+  {planet:'jorden', src:'./images/tellus.jpg'},
   {planet:'mars', src:'./images/mars.jpg'},
   {planet:'jupiter', src:'./images/jupiter.jpg'},
-  {planet:'saturnus', src:'./images/saturnus5r.jpg'},
-  {planet:'uranus', src:'./images/Uranus.jpg'},
+  {planet:'saturnus', src:'./images/saturnus.jpg'},
+  {planet:'uranus', src:'./images/uranus.jpg'},
   {planet:'neptunus', src:'./images/neptune.jpg'},
 ]
 
@@ -56,8 +56,5 @@ document.body.addEventListener('click',(event) =>{
   }
 });
 }
-
-
-
 
 export {showPlanetImage, planetImgLib}

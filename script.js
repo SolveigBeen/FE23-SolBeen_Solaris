@@ -25,7 +25,7 @@ searchBtn.addEventListener("click", async function (event) {
 
   } else {
     console.log("no planet available");
-    displayErrorMessage("Rymden är stor. Ingen planet hittades.");
+    displayErrorMessage("Rymden är stor. Planeten kan inte hittas.");
   }
 }catch (error){
   console.log('Ingen data')
@@ -60,7 +60,7 @@ planets.forEach(planet => {
   planet.addEventListener('mouseout', () => {
   tooltipTimeout = setTimeout(() => {
     hideTooltip(planet);
-    }, 1000);
+    }, 2000);
   });
 });
 

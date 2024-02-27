@@ -230,7 +230,7 @@ body {
   background-color: var(--clr--grey-pink);
 }
 
-#tellus {
+#jorden {
   width: 28px;
   height: 28px;
   border-radius: 28px;
@@ -284,13 +284,6 @@ body {
   background-color: var(--clr--grey-blue);
 }
 
-#neptunus {
-  width: 66px;
-  height: 66px;
-  border-radius: 66px;
-  background-color: var(--clr--grey-blue);
-}
-
 #neptunus > .imagePlaceClass {
   margin-right: 220px;
 }
@@ -298,12 +291,14 @@ body {
 /* tooltip, när muspekare dras över en planet visas dess namn */
 .tooltip {
   position: absolute;
-  background-color: rgba(255, 255, 255);
-  color: #0c164d;
+  background-color:  #060c2e ;
+  box-shadow: 00px 0px 20px lightblue;
+  color: var(--clr--yellow);
   font-family: "Lora", serif;
   font-size: 24px;
   font-weight: 600;
-  padding: 0.5em 1em;
+  letter-spacing: 8px;
+  padding: 0.3em 0.8em;
   border-radius: 3em;
   width: fit-content;
   top: 68%;

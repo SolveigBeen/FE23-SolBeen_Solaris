@@ -1,7 +1,7 @@
-
+// Funktioner för att visa och stänga tooltips som visar namn på planeterna.
 
 function showTooltip(planet) {
- 
+  hideTooltip(planet);
   const tooltip = document.createElement('div');
   tooltip.classList.add('tooltip');
   tooltip.textContent = planet.id.charAt(0).toUpperCase() + planet.id.slice(1);
@@ -10,10 +10,10 @@ function showTooltip(planet) {
 
 // Function to hide tooltip
 function hideTooltip(planet) {
-  const tooltip = planet.querySelector('.tooltip');
-  if (tooltip) {
+  const tooltips = planet.querySelectorAll('.tooltip');
+  tooltips.forEach(tooltip => {
     tooltip.remove();
-  }
+  });
 }
 
 
