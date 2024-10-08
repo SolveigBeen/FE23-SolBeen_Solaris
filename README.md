@@ -1,4 +1,5 @@
 # FE23-SolBeen_Solaris
+### Examination task in course JavaScript, 40yhp at education Frontend developer.
 
 WHEN user has selected a Planet in dropdown, and press SÖK:
 
